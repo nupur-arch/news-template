@@ -109,7 +109,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .brand-review-intro {
   padding: 70px 0 50px;
@@ -169,7 +169,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  font-size: 8px;
+  font-size: var(--text-caption);
   opacity: 0.7;
 }
 .brand-sample {
@@ -178,7 +178,7 @@
 }
 .brand-sample > .eyebrow {
   display: block;
-  font-size: 7px;
+  font-size: var(--text-caption);
   letter-spacing: 0.08em;
   opacity: 0.6;
   margin-bottom: 22px;
@@ -205,7 +205,7 @@
   align-items: start;
 }
 .brand-section-heading > .eyebrow {
-  font-size: 8px;
+  font-size: var(--text-caption);
   color: var(--muted);
   padding-top: 7px;
 }
@@ -218,7 +218,7 @@
   line-height: 1.1;
 }
 .brand-section-heading p {
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 1.8;
   color: var(--muted);
   max-width: 300px;
@@ -241,14 +241,14 @@
   display: block;
   margin-top: 15px;
   color: var(--muted);
-  font-size: 8px;
+  font-size: var(--text-caption);
 }
 .brand-assets {
   padding-top: 50px;
 }
 .brand-assets > .eyebrow {
   color: var(--muted);
-  font-size: 8px;
+  font-size: var(--text-caption);
 }
 .brand-assets h2 {
   margin: 18px 0 27px;
@@ -264,17 +264,17 @@
   align-items: center;
   border-bottom: 1px solid var(--rule);
   padding: 12px 0;
-  font-size: 12px;
+  font-size: var(--text-caption);
 }
 .brand-assets > p {
-  font-size: 12px;
+  font-size: var(--text-caption);
   line-height: 1.9;
   color: var(--muted);
   max-width: 800px;
   margin-top: 25px;
 }
 .brand-assets code {
-  font-size: 11px;
+  font-size: var(--text-caption);
   color: var(--ink);
 }
 @media (max-width: 1100px) {
@@ -310,7 +310,7 @@
     font-size: 64px;
   }
   .brand-review-intro p {
-    font-size: 12px;
+    font-size: var(--text-caption);
   }
   .brand-surfaces {
     grid-template-columns: 1fr;
@@ -346,10 +346,10 @@
   }
   .brand-assets a {
     justify-content: space-between;
-    font-size: 11px;
+    font-size: var(--text-caption);
   }
   .brand-assets > p {
-    font-size: 11px;
+    font-size: var(--text-caption);
   }
   .brand-assets h2 {
     font-size: 32px;

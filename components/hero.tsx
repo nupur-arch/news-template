@@ -233,6 +233,12 @@ export function Hero({
           <ArrowRight size={17} />
         </button>
       </div>
+      <div
+        className="hero-copy"
+        data-trending={active.trending !== undefined}
+        aria-live={paused ? "polite" : "off"}
+        aria-atomic="true"
+      >
       {active.trending !== undefined && (
         <div
           className="trending"
@@ -275,11 +281,7 @@ export function Hero({
           </div>
         </div>
       )}
-      <div
-        className="hero-copy"
-        aria-live={paused ? "polite" : "off"}
-        aria-atomic="true"
-      >
+
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active.id}
@@ -292,7 +294,7 @@ export function Hero({
               <span />
               {active.category.name}
               <span className="chip-divider" />
-              {active.category.number} / THE BIG PICTURE
+              {active.category.number}<span className="chip-context"> / THE BIG PICTURE</span>
             </span>
             <h1>
               {active.title.split("\n").map((line, index) => (

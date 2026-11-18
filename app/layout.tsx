@@ -5,6 +5,8 @@ import { Providers } from "@/components/providers";
 import "./globals.css";
 import "./editorial.css";
 import "./logo.css";
+import "./readability.css";
+import "./hero.css";
 import { RouteTransitions } from "@/components/route-transitions";
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
