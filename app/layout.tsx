@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { Providers } from "@/components/providers";
 import "./globals.css";
+import "./editorial.css";
+import { RouteTransitions } from "@/components/route-transitions";
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
@@ -27,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${display.variable} ${body.variable}`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <RouteTransitions>{children}</RouteTransitions>
+        </Providers>
       </body>
     </html>
   );

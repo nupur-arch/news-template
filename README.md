@@ -23,3 +23,11 @@ UI receives only normalized `Article`, `Category`, and `Banner` objects. `servic
 ## Browser verification
 
 Run the local server, then run yarn verify in a second terminal. The script uses installed Microsoft Edge and defaults to http://localhost:3003; set VERIFY_URL for a different port. It checks desktop and mobile viewport fit, all 20 server-rendered links, carousel interactions and timing, live search, theme controls, reduced motion, native touch scrolling, the mobile drawer, article links, and the missing-story page. Screenshots are saved to the ignored .artifacts directory.
+
+## Extended home page
+
+The home page includes a pauseable breaking marquee, an asymmetric latest-news grid, numbered word-reveal headings, sticky editor picks, and draggable category rails with touch snap, keyboard navigation, and arrow controls. The numbers band derives story, populated-desk, author, and location counts from the loaded articles. Image reveals use a static clip path and a translating mask; parallax, zoom, stacking, route transitions, and footer movement animate transforms and opacity. Reduced motion makes stacks static, stops the marquee, and removes parallax and zoom. Lenis remains disabled for touch and reduced motion.
+
+`yarn verify:home` checks the new sections, drag behavior, counts, newsletter validation, route round trips, reading progress, mobile overflow, dark mode, and reduced motion. Start `yarn dev --port 3003` first, or set `VERIFY_URL` to an existing local server. Browser screenshots go to the ignored `.artifacts/` folder.
+
+Newsletter preview mode validates the form without storing an address or sending email. For real signup, disable mock mode and configure a server-only HTTPS `NEWSLETTER_API_URL` that accepts `POST {email}`; optionally set `NEWSLETTER_API_TOKEN` for Bearer authentication. Success is shown only after the provider accepts the request. Missing configuration and provider failures return an honest retry state. Tokens never enter the browser.

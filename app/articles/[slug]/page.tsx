@@ -1,3 +1,4 @@
+import { ArticleProgress } from "@/components/article-progress";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -30,6 +31,7 @@ export default async function ArticlePage({
   return (
     <>
       <Header articles={articles} />
+      <ArticleProgress />
       <main id="main" className="article-page">
         <Link href="/" className="back-link">
           <ArrowLeft size={16} /> Back to the edition
