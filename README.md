@@ -31,3 +31,7 @@ The home page includes a pauseable breaking marquee, an asymmetric latest-news g
 `yarn verify:home` checks the new sections, drag behavior, counts, newsletter validation, route round trips, reading progress, mobile overflow, dark mode, and reduced motion. Start `yarn dev --port 3003` first, or set `VERIFY_URL` to an existing local server. Browser screenshots go to the ignored `.artifacts/` folder.
 
 Newsletter preview mode validates the form without storing an address or sending email. For real signup, disable mock mode and configure a server-only HTTPS `NEWSLETTER_API_URL` that accepts `POST {email}`; optionally set `NEWSLETTER_API_TOKEN` for Bearer authentication. Success is shown only after the provider accepts the request. Missing configuration and provider failures return an honest retry state. Tokens never enter the browser.
+
+## Responsive reading layout
+
+Hero copy, story cards, and bottom controls use separate grid rows. On narrow or short screens, the hero grows with its content so the Read button, metadata, and cards stay readable and never overlap. Body copy uses 16–19px type, captions have a 13px minimum, and buttons/navigation use 15px type. Run yarn verify:responsive against the local preview to check all stories at desktop and mobile sizes, text sizes, and overflow.

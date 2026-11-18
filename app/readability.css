@@ -1,0 +1,533 @@
+/* A readable baseline applies at every breakpoint; typography never shrinks to fit. */
+:root {
+  --text-caption: 13px;
+  --text-ui: 15px;
+  --text-body: 17px;
+  --muted: #64645c;
+}
+.dark {
+  --muted: #b9b8ae;
+}
+body {
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+.eyebrow {
+  font-size: var(--text-caption);
+  line-height: 1.6;
+  letter-spacing: 0.065em;
+}
+.nav-link {
+  font-size: 15px;
+}
+.desktop-nav {
+  gap: 24px;
+}
+.edition-mark {
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+}
+.search-trigger kbd {
+  font-size: 13px;
+}
+.icon-button {
+  min-width: 40px;
+  min-height: 40px;
+}
+.search-input-wrap input {
+  font-size: 16px;
+}
+.search-panel li a {
+  font-size: 21px;
+}
+.search-panel small,
+.search-empty {
+  font-size: 14px;
+}
+.read-button {
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 46px;
+  padding: 12px 20px;
+}
+.edition-intro {
+  font-size: 13px;
+  line-height: 1.6;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding-block: 22px;
+}
+.edition-intro > span,
+.edition-intro > a {
+  flex-wrap: wrap;
+}
+.edition-intro > span:last-child {
+  font-size: 13px;
+}
+.ticker-label,
+.ticker-copy .eyebrow {
+  font-size: 13px;
+}
+.ticker-copy > a {
+  font-size: 18px;
+}
+.breaking-ticker > button {
+  width: 40px;
+  height: 40px;
+}
+.desk-heading {
+  grid-template-columns: 200px minmax(0, 1fr) 220px;
+  gap: 28px;
+}
+.desk-heading > .eyebrow,
+.strip-heading .desk-heading > .eyebrow,
+.newsletter-copy .desk-heading > .eyebrow,
+.numbers-intro .desk-heading > .eyebrow {
+  font-size: 13px;
+}
+.heading-note {
+  font-size: 16px;
+  max-width: 220px;
+  line-height: 1.65;
+}
+.story-caption > .eyebrow {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.story-caption h3 {
+  font-size: clamp(23px, 2vw, 30px);
+  line-height: 1.16;
+}
+.latest-lead h3 {
+  font-size: clamp(36px, 3.4vw, 52px);
+}
+.story-caption p,
+.newsletter-copy > p,
+.pick-copy p {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 440px;
+}
+.story-byline,
+.strip-story-bottom > span:first-child {
+  font-size: 14px;
+}
+.story-arrow {
+  width: 42px;
+  height: 42px;
+}
+.story-caption .story-arrow {
+  bottom: 18px;
+}
+.story-byline {
+  padding-right: 50px;
+}
+.pick-pin {
+  height: max(600px, 72svh);
+}
+.pick-copy {
+  padding: 36px;
+}
+.pick-copy > .eyebrow:first-child,
+.pick-category,
+.pick-bottom > .eyebrow {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.88;
+}
+.pick-copy h3 {
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.08;
+}
+.pick-copy p {
+  opacity: 0.9;
+}
+.pick-photo-caption {
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: calc(100% - 40px);
+  background: #0e0e0ebf;
+}
+.strip-controls > .eyebrow,
+.strip-story-meta {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.strip-story-meta {
+  flex-wrap: wrap;
+  gap: 5px 14px;
+}
+.strip-controls > button {
+  width: 42px;
+  height: 42px;
+}
+.strip-story {
+  min-width: 260px;
+}
+.strip-story h3 {
+  font-size: 27px;
+  line-height: 1.16;
+  min-height: 2.32em;
+}
+.edition-stat > .eyebrow,
+.numbers-intro > a {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.newsletter-form-side form > p {
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 100%;
+}
+.newsletter-status {
+  min-height: 44px;
+}
+.newsletter-input input {
+  font-size: 18px;
+}
+.newsletter-input button {
+  width: 46px;
+  height: 46px;
+}
+.footer-top nav > a,
+.back-to-top {
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 36px;
+}
+.footer-bottom .eyebrow {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.article-page > .eyebrow {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.back-link {
+  font-size: 16px;
+  min-height: 44px;
+}
+.markdown {
+  font-size: 19px;
+  line-height: 1.9;
+}
+.article-deck {
+  font-size: 22px;
+}
+.state-page p,
+.section-empty {
+  font-size: 17px;
+  line-height: 1.7;
+}
+.brand-back,
+.brand-review-intro p,
+.brand-section-heading p,
+.brand-assets > p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.brand-review .eyebrow,
+.brand-assets code {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.brand-surface-label {
+  flex-wrap: wrap;
+}
+.brand-assets a {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.brand-assets > p {
+  max-width: 900px;
+}
+@media (max-width: 1100px) {
+  .desktop-nav {
+    gap: 18px;
+  }
+  .desk-heading {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 24px;
+  }
+  .heading-note {
+    display: none;
+  }
+  .latest-grid {
+    gap: 32px 22px;
+  }
+  .pick-copy {
+    padding: 30px;
+  }
+  .pick-copy h3 {
+    font-size: 42px;
+  }
+  .strip-story {
+    min-width: 260px;
+  }
+}
+@media (max-width: 900px) {
+  .latest-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .latest-lead {
+    grid-column: 1/-1;
+    grid-row: auto;
+  }
+  .latest-lead .story-image {
+    aspect-ratio: 5/4;
+  }
+  .story-caption h3 {
+    font-size: 25px;
+  }
+  .latest-lead h3 {
+    font-size: 42px;
+  }
+  .strip-heading .desk-heading {
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .page-section {
+    padding-inline: 22px;
+  }
+  .desk-heading {
+    display: block;
+  }
+  .desk-heading h2 {
+    font-size: 38px;
+    line-height: 1.12;
+  }
+  .edition-intro {
+    padding: 20px 24px;
+    gap: 12px;
+    font-size: 13px;
+  }
+  .edition-intro > a {
+    display: flex;
+  }
+  .edition-intro > span:last-child {
+    font-size: 13px;
+  }
+  .breaking-ticker {
+    margin-inline: 24px;
+    gap: 12px;
+  }
+  .ticker-label {
+    font-size: 13px;
+    flex-basis: 70px;
+    flex-wrap: wrap;
+    line-height: 1.4;
+  }
+  .ticker-copy > a {
+    font-size: 17px;
+  }
+  .ticker-copy .eyebrow {
+    font-size: 13px;
+  }
+  .latest-grid {
+    gap: 30px 18px;
+  }
+  .latest-lead h3 {
+    font-size: 38px;
+  }
+  .story-caption h3 {
+    font-size: 23px;
+  }
+  .latest-lead .story-caption h3 {
+    font-size: 38px;
+  }
+  .story-caption > .eyebrow {
+    font-size: 13px;
+    gap: 4px;
+    line-height: 1.6;
+  }
+  .story-caption p {
+    font-size: 16px;
+  }
+  .story-byline {
+    font-size: 13px;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    padding-right: 46px;
+    margin-top: 16px;
+  }
+  .story-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  .story-caption .story-arrow {
+    bottom: 18px;
+  }
+  .pick-pin {
+    height: 760px;
+    min-height: 760px;
+  }
+  .pick-card {
+    grid-template-rows: minmax(0, 1fr) 260px;
+  }
+  .pick-copy {
+    padding: 26px;
+  }
+  .pick-copy > .eyebrow:first-child,
+  .pick-category,
+  .pick-bottom > .eyebrow {
+    font-size: 13px;
+  }
+  .pick-category {
+    margin-top: 18px;
+    padding-top: 0;
+  }
+  .pick-copy h3 {
+    font-size: 37px;
+    -webkit-line-clamp: 3;
+    line-height: 1.1;
+  }
+  .pick-copy p {
+    font-size: 16px;
+    -webkit-line-clamp: 3;
+    line-height: 1.65;
+  }
+  .pick-bottom {
+    padding-top: 20px;
+  }
+  .pick-read {
+    width: 44px;
+    height: 44px;
+  }
+  .pick-photo-caption {
+    font-size: 13px;
+    right: 15px;
+    bottom: 15px;
+  }
+  .strip-heading {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .strip-heading .desk-heading {
+    display: block;
+    flex: 1 1 180px;
+  }
+  .strip-controls {
+    gap: 8px;
+  }
+  .strip-controls > button {
+    width: 42px;
+    height: 42px;
+  }
+  .strip-story {
+    min-width: 0;
+    flex-basis: 85%;
+  }
+  .strip-story h3 {
+    font-size: 27px;
+  }
+  .strip-story-meta {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .strip-story-bottom > span:first-child {
+    font-size: 14px;
+  }
+  .numbers-band {
+    padding-inline: 24px;
+  }
+  .edition-stats {
+    gap: 28px 22px;
+  }
+  .edition-stat > .eyebrow {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .newsletter-card {
+    padding: 30px 24px;
+    gap: 28px;
+  }
+  .newsletter-copy > p {
+    font-size: 16px;
+  }
+  .newsletter-form-side form > p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .newsletter-copy .desk-heading h2 {
+    font-size: 46px;
+  }
+  .newsletter-input input {
+    font-size: 18px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .footer-top > p {
+    grid-column: auto;
+  }
+  .footer-top nav {
+    gap: 14px 25px;
+  }
+  .footer-top nav > a,
+  .back-to-top {
+    font-size: 15px;
+  }
+  .back-to-top {
+    justify-self: start;
+  }
+  .footer-bottom {
+    gap: 14px;
+  }
+  .footer-bottom .eyebrow {
+    font-size: 13px;
+  }
+  .article-deck {
+    font-size: 19px;
+  }
+  .article-page > .eyebrow {
+    font-size: 14px;
+  }
+  .markdown {
+    font-size: 18px;
+    line-height: 1.85;
+  }
+  .brand-review-intro p,
+  .brand-section-heading p,
+  .brand-assets > p {
+    font-size: 16px;
+  }
+  .brand-assets a {
+    font-size: 15px;
+  }
+  .brand-review .eyebrow {
+    font-size: 13px;
+  }
+}
+@media (max-width: 400px) {
+  .latest-grid {
+    grid-template-columns: 1fr;
+  }
+  .latest-lead {
+    grid-column: auto;
+  }
+  .latest-small .story-image {
+    aspect-ratio: 4/3;
+  }
+  .story-caption h3 {
+    font-size: 27px;
+  }
+  .latest-lead .story-caption h3 {
+    font-size: 36px;
+  }
+  .pick-copy {
+    padding: 24px;
+  }
+  .pick-copy h3 {
+    font-size: 34px;
+  }
+  .newsletter-copy .desk-heading h2 {
+    font-size: 40px;
+  }
+  .edition-intro > span:last-child {
+    display: flex;
+  }
+}

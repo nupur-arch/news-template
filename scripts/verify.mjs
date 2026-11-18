@@ -31,7 +31,8 @@ try {
       return {
         hero: r(".hero"),
         copy: r(".hero-copy"),
-        cards: r(".selected-group .news-card"),
+        cards: r(".selected-group"),
+        footer: r(".hero-bottom"),
         overflow: document.documentElement.scrollWidth > innerWidth,
       };
     });
@@ -41,8 +42,8 @@ try {
       `Horizontal overflow at ${width}x${height}`,
     );
     assert.ok(
-      metrics.hero.bottom <= height + 1,
-      `Hero exceeds viewport at ${width}x${height}`,
+      metrics.hero.bottom >= metrics.footer.bottom + 10,
+      `Hero clips bottom controls at ${width}x${height}`,
     );
     assert.ok(
       metrics.copy.bottom <= metrics.cards.top + 5,
@@ -108,6 +109,20 @@ try {
     "true",
     "Autoplay advances after eight seconds",
   );
+  await page.locator("#newsletter").scrollIntoViewIfNeeded();
+  await page.mouse.move(1, 1);
+  await page.waitForTimeout(250);
+  const offscreenProgress = await page
+    .locator(".category-dot.active .dot-progress circle")
+    .getAttribute("stroke-dashoffset");
+  await page.waitForTimeout(350);
+  assert.equal(
+    await page
+      .locator(".category-dot.active .dot-progress circle")
+      .getAttribute("stroke-dashoffset"),
+    offscreenProgress,
+    "Autoplay pauses outside the viewport",
+  );
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
   await page.waitForTimeout(500);
@@ -162,7 +177,7 @@ try {
   await touchPage.close();
   assert.deepEqual(errors, [], "No browser runtime errors");
   console.log(
-    "PASS: SSR links, viewport fit, category/card navigation, search, themes, focus pause, autoplay, reduced motion, Markdown links, and 404.",
+    "PASS: SSR links, content fit, category/card navigation, search, themes, focus pause, autoplay, reduced motion, Markdown links, and 404.",
   );
 } finally {
   await browser.close();

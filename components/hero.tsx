@@ -4,6 +4,7 @@ import {
   AnimatePresence,
   motion,
   useMotionValue,
+  useInView,
   useTransform,
   type MotionValue,
 } from "framer-motion";
@@ -101,6 +102,9 @@ export function Hero({
     [hovered, setHovered] = useState(false),
     [focused, setFocused] = useState(false),
     [stopped, setStopped] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const inView = useInView(heroRef, { amount: 0.1 });
+  const cardsRef = useRef<HTMLDivElement>(null);
   const progress = useMotionValue(0);
   const [reduced, setReduced] = useState(false);
   const [motionReady, setMotionReady] = useState(false);
@@ -116,15 +120,39 @@ export function Hero({
   }, []);
   const elapsed = useRef(0),
     previous = useRef<number | null>(null);
+  useEffect(() => {
+    const rail =
+      cardsRef.current?.querySelector<HTMLElement>(".selected-group");
+    if (!rail) return;
+    const revealSelectedCard = () => {
+      const card = rail.children[cardIndex] as HTMLElement | undefined;
+      if (!card || rail.scrollWidth <= rail.clientWidth + 1) return;
+      const padding = parseFloat(getComputedStyle(rail).paddingLeft) || 0;
+      rail.scrollTo({
+        left: cardIndex === 0 ? 0 : card.offsetLeft - padding,
+        behavior: "instant",
+      });
+    };
+    revealSelectedCard();
+    const observer = new ResizeObserver(revealSelectedCard);
+    observer.observe(rail);
+    return () => observer.disconnect();
+  }, [groupIndex, cardIndex]);
   const activeGroup = groups[groupIndex];
   const active = activeGroup?.articles[cardIndex] ?? activeGroup?.articles[0];
-  const paused = hovered || focused || stopped || reduced || !motionReady;
+  const paused =
+    hovered || focused || stopped || reduced || !motionReady || !inView;
   const selectGroup = (index: number) => {
     setGroupIndex(index);
     setCardIndex(0);
     elapsed.current = 0;
     previous.current = null;
     progress.set(0);
+    cardsRef.current
+      ?.querySelectorAll<HTMLElement>(".card-group")
+      .forEach((rail) => {
+        rail.scrollLeft = 0;
+      });
   };
   useEffect(() => {
     if (paused || groups.length < 2) {
@@ -176,6 +204,7 @@ export function Hero({
   };
   return (
     <section
+      ref={heroRef}
       className="hero"
       aria-label="Featured news"
       aria-roledescription="carousel"
@@ -239,48 +268,48 @@ export function Hero({
         aria-live={paused ? "polite" : "off"}
         aria-atomic="true"
       >
-      {active.trending !== undefined && (
-        <div
-          className="trending"
-          role="img"
-          aria-label={`${active.trending} percent trending`}
-        >
-          <svg viewBox="0 0 110 110" aria-hidden="true">
-            <circle
-              cx="55"
-              cy="55"
-              r="48"
-              fill="none"
-              stroke="#ffffff35"
-              strokeWidth="3"
-            />
-            <motion.circle
-              key={active.id}
-              cx="55"
-              cy="55"
-              r="48"
-              fill="none"
-              stroke="#FFC21A"
-              strokeWidth="6"
-              strokeLinecap="round"
-              pathLength="100"
-              strokeDasharray="100"
-              initial={{
-                strokeDashoffset: reduced ? 100 - active.trending : 100,
-              }}
-              animate={{ strokeDashoffset: 100 - active.trending }}
-              transition={{ duration: reduced ? 0.2 : 1.4 }}
-            />
-          </svg>
-          <div>
-            <strong>
-              {active.trending}
-              <span>%</span>
-            </strong>
-            <small>TRENDING NOW</small>
+        {active.trending !== undefined && (
+          <div
+            className="trending"
+            role="img"
+            aria-label={`${active.trending} percent trending`}
+          >
+            <svg viewBox="0 0 110 110" aria-hidden="true">
+              <circle
+                cx="55"
+                cy="55"
+                r="48"
+                fill="none"
+                stroke="#ffffff35"
+                strokeWidth="3"
+              />
+              <motion.circle
+                key={active.id}
+                cx="55"
+                cy="55"
+                r="48"
+                fill="none"
+                stroke="#FFC21A"
+                strokeWidth="6"
+                strokeLinecap="round"
+                pathLength="100"
+                strokeDasharray="100"
+                initial={{
+                  strokeDashoffset: reduced ? 100 - active.trending : 100,
+                }}
+                animate={{ strokeDashoffset: 100 - active.trending }}
+                transition={{ duration: reduced ? 0.2 : 1.4 }}
+              />
+            </svg>
+            <div>
+              <strong>
+                {active.trending}
+                <span>%</span>
+              </strong>
+              <small>TRENDING NOW</small>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -294,7 +323,8 @@ export function Hero({
               <span />
               {active.category.name}
               <span className="chip-divider" />
-              {active.category.number}<span className="chip-context"> / THE BIG PICTURE</span>
+              {active.category.number}
+              <span className="chip-context"> / THE BIG PICTURE</span>
             </span>
             <h1>
               {active.title.split("\n").map((line, index) => (
@@ -328,7 +358,11 @@ export function Hero({
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="hero-cards" aria-label="Stories by category">
+      <div
+        ref={cardsRef}
+        className="hero-cards"
+        aria-label="Stories by category"
+      >
         {groups.map((group, index) => (
           <motion.div
             key={group.category.id}

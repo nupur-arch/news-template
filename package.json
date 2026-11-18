@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "verify": "node scripts/verify.mjs",
-    "verify:home": "node scripts/verify-home.mjs"
+    "verify:home": "node scripts/verify-home.mjs",
+    "verify:responsive": "node scripts/verify-responsive.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.0.0",

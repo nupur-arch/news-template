@@ -748,7 +748,7 @@ footer .wordmark {
     transition: none !important;
     scroll-behavior: auto !important;
   }
-} /* Keep the entire feature inside the available viewport. */
+}
 @media (max-width: 768px) {
   .read-button {
     margin-top: 12px;
