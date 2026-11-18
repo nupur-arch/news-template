@@ -124,10 +124,11 @@ body {
   padding-right: 50px;
 }
 .pick-pin {
-  height: max(600px, 72svh);
+  height: min(560px, calc(100svh - var(--header-height) - 24px));
+  min-height: 0;
 }
 .pick-copy {
-  padding: 36px;
+  padding: 24px;
 }
 .pick-copy > .eyebrow:first-child,
 .pick-category,
@@ -137,11 +138,15 @@ body {
   opacity: 0.88;
 }
 .pick-copy h3 {
-  font-size: clamp(36px, 4vw, 58px);
-  line-height: 1.08;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.1;
+  margin: 8px 0;
+  -webkit-line-clamp: 2;
 }
 .pick-copy p {
   opacity: 0.9;
+  -webkit-line-clamp: 2;
+  line-height: 1.5;
 }
 .pick-photo-caption {
   font-size: 13px;
@@ -257,10 +262,13 @@ body {
     gap: 32px 22px;
   }
   .pick-copy {
-    padding: 30px;
+    padding: 24px;
   }
   .pick-copy h3 {
-    font-size: 42px;
+    font-size: clamp(30px, 3.2vw, 46px);
+    line-height: 1.1;
+    margin: 8px 0;
+    -webkit-line-clamp: 2;
   }
   .strip-story {
     min-width: 260px;
@@ -361,14 +369,14 @@ body {
     bottom: 18px;
   }
   .pick-pin {
-    height: 760px;
-    min-height: 760px;
+    height: min(560px, calc(100svh - var(--header-height) - 24px));
+    min-height: 0;
   }
   .pick-card {
     grid-template-rows: minmax(0, 1fr) 260px;
   }
   .pick-copy {
-    padding: 26px;
+    padding: 16px;
   }
   .pick-copy > .eyebrow:first-child,
   .pick-category,
@@ -376,21 +384,22 @@ body {
     font-size: 13px;
   }
   .pick-category {
-    margin-top: 18px;
+    margin-top: 10px;
     padding-top: 0;
   }
   .pick-copy h3 {
-    font-size: 37px;
-    -webkit-line-clamp: 3;
+    font-size: 30px;
+    -webkit-line-clamp: 2;
     line-height: 1.1;
+    margin: 8px 0;
   }
   .pick-copy p {
     font-size: 16px;
-    -webkit-line-clamp: 3;
-    line-height: 1.65;
+    -webkit-line-clamp: 2;
+    line-height: 1.5;
   }
   .pick-bottom {
-    padding-top: 20px;
+    padding-top: 10px;
   }
   .pick-read {
     width: 44px;
@@ -519,15 +528,89 @@ body {
     font-size: 36px;
   }
   .pick-copy {
-    padding: 24px;
+    padding: 16px;
   }
   .pick-copy h3 {
-    font-size: 34px;
+    font-size: 28px;
+    line-height: 1.1;
+    margin: 8px 0;
+    -webkit-line-clamp: 2;
   }
   .newsletter-copy .desk-heading h2 {
     font-size: 40px;
   }
   .edition-intro > span:last-child {
     display: flex;
+  }
+}
+/* Editor picks stay fully visible below the sticky header, including their photo. */
+.pick-category {
+  margin-top: 14px;
+  padding-top: 0;
+}
+.pick-bottom {
+  padding-top: 12px;
+}
+.pick-copy p {
+  -webkit-line-clamp: 2;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .pick-card {
+    grid-template-rows: minmax(0, 1fr) 36%;
+  }
+  .pick-copy {
+    min-height: 0;
+  }
+  .pick-category {
+    margin-top: 10px;
+  }
+  .pick-copy h3 {
+    font-size: 30px;
+    line-height: 1.1;
+    margin: 8px 0;
+    -webkit-line-clamp: 2;
+  }
+  .pick-bottom {
+    padding-top: 10px;
+  }
+  .pick-photo-caption {
+    font-size: 13px;
+  }
+}
+@media (max-height: 600px) {
+  .pick-copy p {
+    display: none;
+  }
+  .pick-copy h3 {
+    font-size: 28px;
+  }
+  .pick-copy {
+    padding: 16px;
+  }
+  .pick-category {
+    margin-top: 8px;
+  }
+}
+@media (max-height: 520px) {
+  .pick-copy > .eyebrow:first-child {
+    display: none;
+  }
+  .pick-copy {
+    padding: 12px;
+  }
+  .pick-category {
+    margin-top: 0;
+  }
+  .pick-copy h3 {
+    font-size: 26px;
+    margin: 6px 0;
+  }
+  .pick-bottom {
+    padding-top: 6px;
+  }
+  .pick-read {
+    width: 40px;
+    height: 40px;
   }
 }

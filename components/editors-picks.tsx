@@ -40,7 +40,7 @@ function Pick({
   return (
     <div
       className="pick-pin"
-      style={{ top: `calc(var(--header-height) + ${20 + index * 12}px)` }}
+      style={{ top: "calc(var(--header-height) + 12px)" }}
     >
       <motion.article
         className={`pick-card pick-tone-${index % 2}`}
