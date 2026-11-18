@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { Logo } from "./logo";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { ArrowUpRight, Menu, Moon, Search, Sun, X } from "lucide-react";
@@ -67,13 +68,13 @@ export function Header({ articles }: { articles: Article[] }) {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <Link href="/" className="wordmark" aria-label="The Daily Standard, home">
-        the daily
-        <br />
-        <span className="wordmark-second">
-          standard<span className="brand-period">.</span>
-        </span>
-        <sup>®</sup>
+      <Link
+        href="/"
+        className="brand-home"
+        aria-label="The Daily Standard, home"
+      >
+        <Logo variant="full" className="header-logo-full" aria-hidden="true" />
+        <Logo variant="mark" className="header-logo-mark" aria-hidden="true" />
       </Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         <Link href="/" className="nav-link">

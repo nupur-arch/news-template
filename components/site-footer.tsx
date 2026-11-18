@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { Logo } from "./logo";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -44,11 +45,7 @@ export function SiteFooter({ categories }: { categories: Category[] }) {
         aria-label="The Daily Standard, home"
       >
         <motion.span style={{ y: reduced ? 0 : y }}>
-          the daily
-          <br />
-          <span>
-            standard<span className="brand-period">.</span>
-          </span>
+          <Logo variant="full" className="footer-logo" aria-hidden="true" />
         </motion.span>
       </Link>
       <div className="footer-bottom">
