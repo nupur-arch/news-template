@@ -1,0 +1,3 @@
+import { PageShell } from "@/components/site-shell";
+import { siteConfig } from "@/src/config/site";
+export default function PrivacyPage() { return <PageShell><section className="text-page shell"><span className="kicker">Privacidade</span><h1>Privacidade e transparência</h1><p>Este site não exibe anúncios, não publica links promocionais e não comercializa dados pessoais.</p><h2>Dados de navegação</h2><p>Podemos usar dados técnicos agregados para entender o funcionamento do site. Eles não são usados para criar perfis comerciais.</p><h2>Contato e atualizações</h2><p>Quando esta política mudar, a versão mais recente será publicada nesta página. Domínio oficial: {siteConfig.domain}.</p></section></PageShell>; }

@@ -1,61 +1,18 @@
-import "lenis/dist/lenis.css";
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
-import { Providers } from "@/components/providers";
+import { Fraunces, Inter } from "next/font/google";
+import { siteConfig } from "@/src/config/site";
 import "./globals.css";
-import "./editorial.css";
-import "./logo.css";
-import "./readability.css";
-import "./hero.css";
-import { RouteTransitions } from "@/components/route-transitions";
-const display = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-const body = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
+
+const heading = Fraunces({ subsets: ["latin-ext"], variable: "--font-heading", display: "swap" });
+const body = Inter({ subsets: ["latin-ext"], variable: "--font-body-brand", display: "swap" });
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
-  icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
-  openGraph: {
-    images: [
-      {
-        url: "/og-logo.png",
-        width: 1200,
-        height: 630,
-        alt: "The Daily Standard folded newspaper mark",
-      },
-    ],
-  },
-  twitter: { card: "summary_large_image", images: ["/og-logo.png"] },
-  title: {
-    default: "The Daily Standard — A wider view",
-    template: "%s | The Daily Standard",
-  },
-  description:
-    "Independent perspectives on world affairs, culture, science, and sport.",
+  metadataBase: new URL(`https://${siteConfig.domain}`),
+  title: { default: siteConfig.seoTitle, template: `%s | ${siteConfig.name}` },
+  description: siteConfig.description,
+  icons: { icon: "/favicon.svg", apple: "/app-icon.svg" },
 };
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${display.variable} ${body.variable}`}>
-        <Providers>
-          <RouteTransitions>{children}</RouteTransitions>
-        </Providers>
-      </body>
-    </html>
-  );
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="pt-BR" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("cbo-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){}` }} /></head><body className={`${heading.variable} ${body.variable}`}>{children}</body></html>;
 }

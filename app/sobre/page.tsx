@@ -1,0 +1,3 @@
+import { PageShell } from "@/components/site-shell";
+import { siteConfig } from "@/src/config/site";
+export default function AboutPage() { return <PageShell><section className="text-page shell"><span className="kicker">Sobre</span><h1>Contabilidade pode ser mais clara.</h1><p>{siteConfig.name} é um projeto editorial sobre {siteConfig.topic.toLocaleLowerCase("pt-BR")}, feito para {siteConfig.audience.toLocaleLowerCase("pt-BR")}.</p><p>Nosso foco é traduzir conceitos, rotinas e mudanças sem alarmismo, com contexto e indicações de fontes oficiais.</p><p>{siteConfig.footerNote}</p></section></PageShell>; }
